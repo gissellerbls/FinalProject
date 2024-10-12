@@ -15,18 +15,19 @@ from PIL import Image, ImageTk
 
 # Main application window
 root = tk.Tk()
-root.title("Coffee Ordering System")
-root.geometry("800x600")
-root.config(bg="#dbc1ac")
+root.title("Coffee Ordering System") # Set the title of the window
+root.geometry("800x600")  # Set the dimensions of the window
+root.config(bg="#dbc1ac") # Set the background color of the window
 
-root.grid_columnconfigure(0, weight=1)
-root.grid_columnconfigure(1, weight=1)
+# Configure the grid layout for better responsiveness
+root.grid_columnconfigure(0, weight=1) # Allow the first column to expand
+root.grid_columnconfigure(1, weight=1) # Allow the second column to expand
 
-# Load the image
-image = Image.open("IceCoffee.png")
-image1= Image.open("HotCoffee.png")
+# Load the coffee types images
+image = Image.open("IceCoffee.png") # Load ice coffee image
+image1= Image.open("HotCoffee.png") # Load hot coffee image
 
-# Resize the image
+# Resize the images
 smaller_ice_image = image.resize((70, 70)) 
 smaller_hot_image = image1.resize((70, 70))
 
@@ -141,8 +142,9 @@ AddonWindow = None
 
 # Function for the second window
 class AddonWindow:
+    """Class to manage the add-ons selection window."""
     def __init__(self, master):
-        self.master = master
+        self.master = master # Reference to the main window
         self.addon_window = None  # Placeholder for the add-on window
         self.addon_vars = {}  # Dictionary to store the state of add-on checkboxes
         self.addons = {
@@ -158,6 +160,7 @@ class AddonWindow:
         }
 
     def open_addon_window(self):
+
         # Checks if window is already open
         if self.addon_window is None or not self.addon_window.winfo_exists():
             self.addon_window = tk.Toplevel(self.master)
@@ -243,4 +246,4 @@ exit_button = tk.Button(root, text="Exit", command=root.quit, font = ("Bubblegum
 
 
 # Run the main loop
-root.mainloop()
+root.mainloop() # Run the Tkinter event loop
